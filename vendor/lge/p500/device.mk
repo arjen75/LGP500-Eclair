@@ -1,7 +1,10 @@
 DEVICE_PACKAGE_OVERLAYS += device/lge/p500/overlay
 
-PRODUCT_COPY_FILES += \
-    device/lge/p500/prebuilt/kernel:kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+ifeq ($(TARGET_KERNEL_CONFIG),)
+TARGET_PREBUILT_KERNEL := device/lge/thunderg/kernel
+endif # TARGET_KERNEL_CONFIG
+endif # TARGET_PREBUILT_KERNEL
 
 PRODUCT_PACKAGES += \
     librs_jni \
